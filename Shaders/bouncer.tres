@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float time_factor = 3;
+uniform bool playing = false;
+
+void vertex(){
+	if(playing){
+		VERTEX.x += cos(TIME * time_factor + VERTEX.x + VERTEX.y) * 10.0;
+		VERTEX.y += sin(TIME * time_factor + VERTEX.x) * 0.10;		
+	}
+}"
+
+[resource]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/time_factor = 3.0
+shader_param/playing = false

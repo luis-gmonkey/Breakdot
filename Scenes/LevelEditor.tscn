@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/main_tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/TileMap.gd" type="Script" id=2]
+[ext_resource path="res://Assets/backgrounds/city_night.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/LevelEditor.gd" type="Script" id=4]
+[ext_resource path="res://Assets/music/Ludum Dare 28 - Track 8.wav" type="AudioStream" id=5]
+
+[node name="LevelEditor" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_scale = Vector2( 0.563146, 0.563146 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+centered_textures = true
+collision_use_kinematic = true
+collision_friction = 0.0
+format = 1
+script = ExtResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MenuButton" type="MenuButton" parent="."]
+margin_left = 928.0
+margin_top = 576.0
+margin_right = 976.0
+margin_bottom = 596.0
+text = "Menu"
+flat = false
+items = [ "Load Level", null, 0, false, false, 0, 0, null, "", false, "Save Level", null, 0, false, false, 1, 0, null, "", false ]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialog" type="FileDialog" parent="."]
+margin_left = 272.579
+margin_top = 167.736
+margin_right = 786.579
+margin_bottom = 432.736
+rect_min_size = Vector2( 160, 56 )
+access = 2
+current_dir = "C:/"
+current_path = "C:/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorkingTile" type="Sprite" parent="."]
+
+[node name="Exit" type="Button" parent="."]
+margin_left = 984.0
+margin_top = 576.0
+margin_right = 1019.0
+margin_bottom = 596.0
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="."]
+margin_left = 840.0
+margin_top = 576.0
+margin_right = 920.0
+margin_bottom = 596.0
+text = "Play Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 5 )
+autoplay = true
+bus = "Music"
+[connection signal="file_selected" from="FileDialog" to="." method="_on_FileDialog_file_selected"]
+[connection signal="visibility_changed" from="FileDialog" to="." method="_on_FileDialog_visibility_changed"]
+[connection signal="pressed" from="Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]

@@ -1,0 +1,6 @@
+C:\Users\_rinzler\Documents\DEV\game_dev\Godot Projects\Arkanoid\.mono\temp\bin\Tools\Arkanoid.dll
+C:\Users\_rinzler\Documents\DEV\game_dev\Godot Projects\Arkanoid\.mono\temp\bin\Tools\Arkanoid.pdb
+C:\Users\_rinzler\Documents\DEV\game_dev\Godot Projects\Arkanoid\.mono\temp\obj\Tools\Arkanoid.csprojAssemblyReference.cache
+C:\Users\_rinzler\Documents\DEV\game_dev\Godot Projects\Arkanoid\.mono\temp\obj\Tools\Arkanoid.csproj.CoreCompileInputs.cache
+C:\Users\_rinzler\Documents\DEV\game_dev\Godot Projects\Arkanoid\.mono\temp\obj\Tools\Arkanoid.dll
+C:\Users\_rinzler\Documents\DEV\game_dev\Godot Projects\Arkanoid\.mono\temp\obj\Tools\Arkanoid.pdb

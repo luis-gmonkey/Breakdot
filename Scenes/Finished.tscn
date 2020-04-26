@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/finish.png" type="Texture" id=2]
+[ext_resource path="res://Assets/backgrounds/city_night.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Finished.gd" type="Script" id=4]
+[ext_resource path="res://Assets/music/Ludum Dare 30 - Track 8.wav" type="AudioStream" id=5]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform float time_factor = 3;
+uniform bool playing = false;
+
+void vertex(){
+	if(playing){
+		VERTEX.x += cos(TIME * time_factor + VERTEX.x + VERTEX.y) * 10.0;
+		VERTEX.y += sin(TIME * time_factor + VERTEX.x) * 0.10;		
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/time_factor = 3.0
+shader_param/playing = true
+
+[node name="Node" type="Node"]
+script = ExtResource( 4 )
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1920.0
+margin_bottom = 1080.0
+rect_scale = Vector2( 0.563, 0.563 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinText" type="TextureRect" parent="."]
+material = SubResource( 2 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -373.0
+margin_top = -292.5
+margin_right = 373.0
+margin_bottom = 292.5
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Win" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 5 )
+autoplay = true

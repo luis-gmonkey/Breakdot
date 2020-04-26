@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/main_tilemap.tres" type="TileSet" id=1]
+[ext_resource path="res://Assets/backgrounds/city_night.png" type="Texture" id=2]
+[ext_resource path="res://Assets/music/Galactic Funk.wav" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Main.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Ingame_ui.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/TileMap.gd" type="Script" id=6]
+[ext_resource path="res://Assets/sfx/Lose 5 - Sound effects Pack 2.wav" type="AudioStream" id=7]
+[ext_resource path="res://Assets/music/Ludum Dare 30 - Track 8.wav" type="AudioStream" id=8]
+
+[node name="Node" type="Node"]
+script = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 0.56347, 0.56347 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( -1, 0 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+centered_textures = true
+collision_use_kinematic = true
+collision_friction = 0.0
+format = 1
+script = ExtResource( 6 )
+
+[node name="PlayfieldArea" type="ReferenceRect" parent="."]
+margin_left = -1.29236
+margin_right = 1022.71
+margin_bottom = 634.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ingame_ui" parent="." instance=ExtResource( 5 )]
+
+[node name="Sfx" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 3 )
+bus = "Music"
+
+[node name="DeadBall" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 7 )
+bus = "SoundEffect"
+
+[node name="Win" type="AudioStreamPlayer" parent="Sfx"]
+stream = ExtResource( 8 )
+bus = "Music"
